@@ -1,0 +1,362 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Library API",
+    "description": "API for Library",
+    "version": "1.0.0"
+  },
+  "_servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "localhost"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Book",
+      "description": "List of Books"
+    },
+    {
+      "name": "Member",
+      "description": "List of Members"
+    }
+  ],
+  "paths": {
+    "/books": {
+      "get": {
+        "tags": ["Book"],
+        "summary": "Get All Books",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/book": {
+      "post": {
+        "tags": ["Book"],
+        "summary": "Create Book Data",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "stock": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/book/{id}": {
+      "get": {
+        "tags": ["Book"],
+        "summary": "Get One Book By ID",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Book"],
+        "summary": "Update One Book By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Book ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "stock": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Book"],
+        "summary": "Delete One Book By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/available-books": {
+      "get": {
+        "tags": ["Book"],
+        "summary": "Get All Available Books",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/members": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get All Members with How Many Book That Being Borrowed by Each Member",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/member": {
+      "post": {
+        "tags": ["Member"],
+        "summary": "Create Member",
+        "consumes": "application/json",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "defaultValue": "Not Penalized"
+                  },
+                  "borrowed_book": {
+                    "type": "integer",
+                    "defaultValue": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/member/{id}": {
+      "get": {
+        "tags": ["Member"],
+        "summary": "Get Member by ID",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Member ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Member"],
+        "summary": "Update Member By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Member ID"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "defaultValue": "Not Penalized"
+                  },
+                  "borrowed_book": {
+                    "type": "integer",
+                    "defaultValue": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Member"],
+        "summary": "Delete Member By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Member ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/borrow-book/{member_id}/{book_id}": {
+      "patch": {
+        "tags": ["Member"],
+        "summary": "Member Borrow a Book",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "member_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Member ID"
+          },
+          {
+            "in": "path",
+            "name": "book_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/return-book/{member_id}/{book_id}": {
+      "patch": {
+        "tags": ["Member"],
+        "summary": "Member Return a Book",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "member_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Member ID"
+          },
+          {
+            "in": "path",
+            "name": "book_id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  }
+}
